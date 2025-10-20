@@ -1,0 +1,2 @@
+# min-sum-square
+Given an array of n integers, the goal is to find the minimum square of the sum of the sums of two elements together. More precisely: for each pair i ≤ j of the array, calculate the value a[i] + a[j], then square this value. Finally, find the minimum of all squares.
