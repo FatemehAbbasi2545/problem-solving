@@ -1,12 +1,4 @@
 
-logs = [
-    'u1,/home, 200',
-    'u2,/about, 200',
-    'u1,/products, 200',
-    'u3,/home, 404',
-    'u2,/home, 200'
-]
-
 def parse_log_line(line: str) -> dict:
     parts = line.strip().split(',')
     if len(parts) != 3:
@@ -59,12 +51,21 @@ def format_report(user_counts, page_views, errors, total):
         'error_rate': error_rate
     }
     return report
-    
-data = aggregate_logs(logs)
-user_counts, page_views, errors, total = data
-report = format_report(user_counts, page_views, errors, total)
-print(report)
 
+def main():    
+    logs = [
+        'u1,/home, 200',
+        'u2,/about, 200',
+        'u1,/products, 200',
+        'u3,/home, 404',
+        'u2,/home, 200'
+    ]        
+    user_counts, page_views, errors, total = aggregate_logs(logs)    
+    report = format_report(user_counts, page_views, errors, total)
+    print(report)
+
+if __name__ == "__main__":
+    main()
 
     
 

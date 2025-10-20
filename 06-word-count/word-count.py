@@ -13,5 +13,9 @@ def word_count(text: str) -> int:
 
     return sum(1 for x in result if x)
 
-txt = input('Enter a text: ')
-print(word_count(txt))
+def main():
+    txt = input('Enter a text: ')
+    print(word_count(txt))
+
+if __name__ == "__main__":
+    main()
