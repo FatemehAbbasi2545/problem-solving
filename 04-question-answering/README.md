@@ -1,0 +1,2 @@
+# question-answering
+We have several questions that are asked to the user in order. The user enters the answer to each question, if the answer is correct, a positive result will be recorded, and if it is incorrect, an error message and a second chance will be given to the user. If the user enters the wrong answer again, a negative result will be recorded for the user. At the end, the program displays the answers to all the questions and the number of correct answers the user gave.

@@ -1,2 +1,2 @@
 # problem-solving
-برای بهبود مهارت های حل مساله، هر روز نیاز به مساله حل کردن داریم. این پروژه شامل بخش های مختلفی است. در هر یخش یک مساله توضیح داده شده و با زبان پایتون حل می شود.
+To improve problem-solving skills, we need to solve problems every day. This project consists of different parts. In each part, a problem is explained and solved using Python.
