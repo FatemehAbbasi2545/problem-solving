@@ -4,7 +4,7 @@ import random
 def find_all_permutations(letters: list[str]):
     n = len(letters); permutations = []
 
-    p = math.factorial(n) / math.factorial(n - n) # Number of permutations of r objects out of n objects
+    p = int(math.factorial(n) / math.factorial(n - n)) # Number of permutations of r objects out of n objects
 
     while True:
         result = []
@@ -22,11 +22,11 @@ def find_all_permutations(letters: list[str]):
                 break
         if len(permutations) == p:
             break
-
+    
     return len(permutations)
 
-def find_all_possible_combinations(letters: list[str]):    
-    n = len(letters); combinations = []; r = 4
+def find_all_possible_combinations(letters: list[str], r: int):    
+    n = len(letters); combinations = []
 
     for i1 in range(n - r + 1):        
         for i2 in range(i1 + 1, n - r + 2):
@@ -36,16 +36,13 @@ def find_all_possible_combinations(letters: list[str]):
 
     return combinations
 
-def find_all_possible_words(letters: list[str], r: int): 
-    pass
-
 def main():
     letters = ['f','l','o','w','e','r']; n = len(letters); r = 4
 
     p = int(math.factorial(n) / math.factorial(n - r)) # Number of permutations of r objects out of n objects
     c = int(p / math.factorial(r)) # Number of combinations of r objects out of n objects
 
-    combinations = find_all_possible_combinations(letters)
+    combinations = find_all_possible_combinations(letters, r)
 
     if (len(combinations) != c):
         print('The results produced are not correct.')
@@ -57,6 +54,7 @@ def main():
 
     if (total_number != p):
         print('The results produced are not correct.')
+    else: print(total_number)
 
 if __name__ == '__main__':
     main()
