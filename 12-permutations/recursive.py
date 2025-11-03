@@ -61,6 +61,8 @@ def main():
 
     if (total_number != p):
         print('The results produced are not correct.')
+    else:
+        print(total_number)
 
 if __name__ == '__main__':
     main()
