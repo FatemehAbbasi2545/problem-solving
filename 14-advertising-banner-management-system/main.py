@@ -1,4 +1,4 @@
-from typing import NamedTuple, List, Dict, Iterator, Optional
+from typing import NamedTuple, Iterator, Optional
 import random
 
 class Banner(NamedTuple):
@@ -9,26 +9,13 @@ class Banner(NamedTuple):
 
 class Campaign(NamedTuple):
     name: str
-    banners: List[Banner]
-    weights: Optional[List[float]] = None # If not, we use CTR for weight.
-    seed: Optional[int] = None # For repeatable random generation
-
-class BannerBase:
-    def render(self) -> str:
-        raise NotImplementedError
-
-class WeightedBanner(BannerBase):
-    def __init__(self, banner: Banner):
-        self.banner = banner
-
-    def render(self) -> str:
-        return f"Banner({self.banner.name}, {self.banner.width}x{self.banner.height})"
+    banners: list[Banner]
+    weights: Optional[list[float]] = None # If not, we use CTR for weight.
 
 class CampaignManager:
     def __init__(self, campaign: Campaign):
         self.campaign = campaign
-        self._rng = random.Random(campaign.seed)
-        self._cache: Dict[str, int] = {}
+        self._cache: dict[str, int] = {}
 
         if campaign.weights and len(campaign.weights) == len(campaign.banners):
             self.weights = campaign.weights
@@ -41,9 +28,9 @@ class CampaignManager:
     def _choose_index(self) -> int:
         # Select a banner with linear/relative weight
         total = sum(self.weights)
-        if total <= 0:
-            return self._rng.randrange(len(self.campaign.banners))
-        pick = self._rng.uniform(0, total)
+        if total <= 0:            
+            return random.randrange(0, len(self.campaign.banners))
+        pick = random.uniform(0, total)  
         acc = 0.0
         for i, w in enumerate(self.weights):
             acc += w
@@ -76,7 +63,7 @@ if __name__ == "__main__":
         Banner("Sidebar", 300, 250, 0.2),
         Banner("Footer", 970, 90, 0.3),
     ]
-    camp = Campaign("SpringLaunch", banners, seed=42)
+    camp = Campaign("SpringLaunch", banners)
     manager = CampaignManager(camp)
 
     stream = manager.banner_stream()

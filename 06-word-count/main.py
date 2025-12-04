@@ -1,17 +1,10 @@
 
 def word_count(text: str) -> int:
-    result = []
+    seprators = [',', '.']
+    for sep in seprators:
+        text = text.replace(sep, ' ')
     words = text.split(' ')
-
-    for word in words:
-        if ',' in word:
-            result.extend(word.split(','))
-        elif '.' in word:
-            result.extend(word.split('.'))
-        else:
-            result.append(word)
-
-    return sum(1 for x in result if x)
+    return sum(1 for word in words if word)
 
 def main():
     txt = input('Enter a text: ')

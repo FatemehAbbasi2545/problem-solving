@@ -1,4 +1,17 @@
-def main():
+def ask_questions(questions: list[dict]):
+    for x in questions:
+        user_input = input(f'{x['question']} ')
+        if user_input.lower() == x['answer'].lower():
+            x['result'] = True
+        else:
+            print('Your answer is incorrect.')
+            user_input = input(f'{x['question']} ')
+            x['result'] = True if user_input.lower() == x['answer'].lower() else False
+        
+    for x in questions:
+        print(f'{x["question"]}: {x["answer"]}, result: {'You succeeded. Your answer is correct.' if x['result'] == True else 'You failed. Your answer is incorrect.'}')
+
+def main():    
     questions = [
         { 
             'question': 'Who is the best golfer in the world in 2025?',
@@ -9,7 +22,7 @@ def main():
             'answer': 'Rome'
         },
         { 
-            'question': 'What software company is headquartered in Redmond, Washington?',
+            'question': 'Which city is the capital of Iran?',
             'answer': 'Microsoft'
         },
         { 
@@ -22,17 +35,7 @@ def main():
         }
     ]
 
-    for x in questions:
-        user_input = input(f'{x['question']} ')
-        if user_input.lower() == x['answer'].lower():
-            x['result'] = True
-        else:
-            print('Your answer is incorrect.')
-            user_input = input(f'{x['question']} ')
-            x['result'] = True if user_input.lower() == x['answer'].lower() else False
-        
-    for x in questions:
-        print(f'{x["question"]}: {x["answer"]}, result: {'You succeeded. Your answer is correct.' if x['result'] == True else 'You failed. Your answer is incorrect.'}')
+    ask_questions(questions)
 
 if __name__ == "__main__":
     main()

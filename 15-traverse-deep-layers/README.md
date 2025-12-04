@@ -1,0 +1,2 @@
+# traverse-deep-layers
+Let's take a list/tuple of items, the list/tuple itself contains another list/tuple, the inner list/tuple itself contains another list/tuple, and so on, including nested lists. The program will traverse the sets from the deepest level and print all the items in all the sets as a list without inner sets.
