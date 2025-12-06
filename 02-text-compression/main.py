@@ -4,18 +4,16 @@ def text_compression(txt: str):
     output = ''
 
     while i < len(txt):
-        j = 1
         count = 1
-        while i + j < len(txt) and txt[i] == txt[i + j]:
+        while i + count < len(txt) and txt[i] == txt[i + count]:
             count += 1        
-            j += 1
 
         output += f'{txt[i]}{count}' if count > 1 else f'{txt[i]}'
-        i = i + j
+        i = i + count
 
     return output
 
-def main():    
+def main():
     user_input = input('Enter a text: ')
     output  = text_compression(user_input)
     print(output)
